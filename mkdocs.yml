@@ -13,7 +13,7 @@ plugins:
 nav:
   - Home: index.md
   - About: about.md
-  - Dashboard cycle:
+  - Dashboard lifecycle:
       - Why RAP is important: introduction_to_RAP/why_RAP_is_important.md
       - Levels of RAP: introduction_to_RAP/levels_of_RAP.md
       - What is open source?: introduction_to_RAP/what-is-open-source.md
