@@ -1,6 +1,6 @@
 # Dashboard design
 
-We convey our visual identity through the products we build. Design guidelines help us to work together on sophisticated digital products, using a standardised visual language. 
+At NHS England, we convey our visual identity through the products we build. Design guidelines help us to work together on sophisticated digital products, using a standardised visual language. 
 <br>
 These guidelines are for developers, product owners and quality assurance testers working on data visualisation products in the NHS.
 
