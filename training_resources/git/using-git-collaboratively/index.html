@@ -1,0 +1,2191 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../images/favicon/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>Using Git collaboratively - Data Viz Community of Practice</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+      
+  
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--<type>:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2 1 21Z"/></svg>');}</style>
+
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arial:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Arial";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#using-git-collaboratively" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to configuration -->
+
+
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+<!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+
+    <!-- Link to home -->
+    <a
+      href="../../.."
+      title="Data Viz Community of Practice"
+      class="md-header__button md-logo-nhs"
+      aria-label="Data Viz Community of Practice"
+      data-md-component="logo"
+    >
+      
+  <img src="../../../images/logo/nhs-blue-on-white.jpg" alt="logo">
+
+    </a>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Data Viz Community of Practice
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Using Git collaboratively
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette -->
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+
+    <!-- Repository information -->
+    
+      <div class="md-header__source">
+        <a href="https://github.com/p-jacques/data-viz-community-of-practice" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Data Viz Community of Practice
+  </div>
+</a>
+      </div>
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../about/" class="md-tabs__link">
+      About
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../dashboard_lifecycle/" class="md-tabs__link">
+        Dashboard lifecycle
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../dashboard_design/" class="md-tabs__link">
+        Dashboard design
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../implementing_RAP/rap-readiness/" class="md-tabs__link">
+        QA & Testing
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../intro-to-git/" class="md-tabs__link md-tabs__link--active">
+        Training resources
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../support/" class="md-tabs__link">
+      Support
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../glossary/" class="md-tabs__link">
+      Glossary
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../useful_links/" class="md-tabs__link">
+      Useful links
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../acknowledgements/" class="md-tabs__link">
+      Acknowledgements
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Data Viz Community of Practice" class="md-nav__button md-logo" aria-label="Data Viz Community of Practice" data-md-component="logo">
+      
+  <img src="../../../images/logo/nhs-blue-on-white.jpg" alt="logo">
+
+    </a>
+    Data Viz Community of Practice
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/p-jacques/data-viz-community-of-practice" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Data Viz Community of Practice
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../dashboard_lifecycle/">Dashboard lifecycle</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Dashboard lifecycle" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Dashboard lifecycle
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_lifecycle/planning_cycle/" class="md-nav__link">
+        Planning cycle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_lifecycle/sketches_wireframes_prototypes/" class="md-nav__link">
+        Sketches, Wireframes and Prototypes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../dashboard_design/">Dashboard design</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Dashboard design" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Dashboard design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/principles/" class="md-nav__link">
+        Principles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/layout/" class="md-nav__link">
+        Layout & navigation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/typography/" class="md-nav__link">
+        Typography
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/colours/" class="md-nav__link">
+        Colours
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/icons/" class="md-nav__link">
+        Icons & logos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/filters/" class="md-nav__link">
+        Filters & buttons
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/kpis/" class="md-nav__link">
+        KPIs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/chart_types/" class="md-nav__link">
+        Chart types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/tables/" class="md-nav__link">
+        Table design
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/tooltips/" class="md-nav__link">
+        Tooltips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/guidance/" class="md-nav__link">
+        Guidance & info page
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          QA & Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="QA & Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          QA & Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/rap-readiness/" class="md-nav__link">
+        Are you ready for RAP?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/code-review/" class="md-nav__link">
+        Code review
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/coding-best-practice/" class="md-nav__link">
+        Coding best practice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/when-to-stop-coding/" class="md-nav__link">
+        When to stop coding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/how-to-publish-your-code-in-the-open/" class="md-nav__link">
+        How to publish your code in the open
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/updating-your-published-code/" class="md-nav__link">
+        Updating published code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/accessibility-how-to/" class="md-nav__link">
+        Guidance on accessibility
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/quality-assuring-analytical-outputs/" class="md-nav__link">
+        Quality assuring analytical outputs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/technical-workflow/" class="md-nav__link">
+        Technical workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/notebooks_versus_ide_development/" class="md-nav__link">
+        Notebooks vs IDE development
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/tidy-data/" class="md-nav__link">
+        Tidy data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/tools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Training resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Training resources" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Training resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_1" type="checkbox" id="__nav_6_1" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6_1">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro-to-git/" class="md-nav__link">
+        Intro to Git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Using Git collaboratively
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Using Git collaboratively
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-git-collaboratively" class="md-nav__link">
+    Working with git collaboratively
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resolving-merge-conflicts" class="md-nav__link">
+    Resolving merge conflicts
+  </a>
+  
+    <nav class="md-nav" aria-label="Resolving merge conflicts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-resolve-merge-conflicts-using-git-if-they-occur" class="md-nav__link">
+    How to resolve merge conflicts using git - if they occur
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spyder" class="md-nav__link">
+    Spyder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vscode" class="md-nav__link">
+    VSCode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#once-the-conflict-is-resolved" class="md-nav__link">
+    Once the Conflict is Resolved
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-branching" class="md-nav__link">
+    Git branching
+  </a>
+  
+    <nav class="md-nav" aria-label="Git branching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#branch-naming-strategy" class="md-nav__link">
+    Branch naming strategy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#general-guidelines-for-branching-and-merge-requests" class="md-nav__link">
+    General guidelines for branching and merge requests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-git-collaboratively-exercise" class="md-nav__link">
+    Using git collaboratively exercise
+  </a>
+  
+    <nav class="md-nav" aria-label="Using git collaboratively exercise">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#team-exercise" class="md-nav__link">
+    Team exercise
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#top-tips-for-git" class="md-nav__link">
+    Top tips for git
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../githooks/" class="md-nav__link">
+        Git Hooks
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" type="checkbox" id="__nav_6_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6_2">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/intro-to-python/" class="md-nav__link">
+        Intro to python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/basic-python-data-analysis-operations/" class="md-nav__link">
+        Basic Python data analysis operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python-functions/" class="md-nav__link">
+        Python functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/visualisation-in-python/" class="md-nav__link">
+        Visualisation in Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/handling-file-paths/" class="md-nav__link">
+        Handling file paths
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/logging-and-error-handling/" class="md-nav__link">
+        Logging and error handling in Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/project-structure-and-packaging/" class="md-nav__link">
+        Project structure and packaging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/using-f-strings-sql-queries/" class="md-nav__link">
+        Using Python f-strings to run SQL queries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2_9" type="checkbox" id="__nav_6_2_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6_2_9">
+          Virtual environments
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Virtual environments" data-md-level="3">
+        <label class="md-nav__title" for="__nav_6_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Virtual environments
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/virtual-environments/why-use-virtual-environments/" class="md-nav__link">
+        Why use virtual environments?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/virtual-environments/venv/" class="md-nav__link">
+        Venv
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/virtual-environments/conda/" class="md-nav__link">
+        Conda
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/unit-testing/" class="md-nav__link">
+        Unit testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/unit-testing-field-definitions/" class="md-nav__link">
+        Unit testing field definitions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/backtesting/" class="md-nav__link">
+        Back testing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" type="checkbox" id="__nav_6_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../pyspark/">PySpark</a>
+          
+            <label for="__nav_6_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="PySpark" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          PySpark
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pyspark/logging-and-error-handling/" class="md-nav__link">
+        Logging and error handling in PySpark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pyspark/pyspark-style-guide/" class="md-nav__link">
+        PySpark style guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pyspark/pyspark-tutorial.py" class="md-nav__link">
+        Download our PySpark tutorial
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pyspark/efficient-pyspark-case-study.ipynb" class="md-nav__link">
+        Efficient Pyspark case study
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_4" type="checkbox" id="__nav_6_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../R/">R</a>
+          
+            <label for="__nav_6_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="R" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_4">
+          <span class="md-nav__icon md-icon"></span>
+          R
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../R/git_with_RStudio/" class="md-nav__link">
+        Git with RStudio
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support/" class="md-nav__link">
+        Support
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../useful_links/" class="md-nav__link">
+        Useful links
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../acknowledgements/" class="md-nav__link">
+        Acknowledgements
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-git-collaboratively" class="md-nav__link">
+    Working with git collaboratively
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resolving-merge-conflicts" class="md-nav__link">
+    Resolving merge conflicts
+  </a>
+  
+    <nav class="md-nav" aria-label="Resolving merge conflicts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-resolve-merge-conflicts-using-git-if-they-occur" class="md-nav__link">
+    How to resolve merge conflicts using git - if they occur
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spyder" class="md-nav__link">
+    Spyder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vscode" class="md-nav__link">
+    VSCode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#once-the-conflict-is-resolved" class="md-nav__link">
+    Once the Conflict is Resolved
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-branching" class="md-nav__link">
+    Git branching
+  </a>
+  
+    <nav class="md-nav" aria-label="Git branching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#branch-naming-strategy" class="md-nav__link">
+    Branch naming strategy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#general-guidelines-for-branching-and-merge-requests" class="md-nav__link">
+    General guidelines for branching and merge requests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-git-collaboratively-exercise" class="md-nav__link">
+    Using git collaboratively exercise
+  </a>
+  
+    <nav class="md-nav" aria-label="Using git collaboratively exercise">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#team-exercise" class="md-nav__link">
+    Team exercise
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#top-tips-for-git" class="md-nav__link">
+    Top tips for git
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  <a href="https://github.com/p-jacques/data-viz-community-of-practice/edit/main/docs/training_resources/git/using-git-collaboratively.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="using-git-collaboratively">Using Git collaboratively</h1>
+<h2 id="working-with-git-collaboratively">Working with git collaboratively</h2>
+<p>In the video below, you can view the git workflow that's follows the changes made to a working branch, committing the changes and pushing them to the repository, on Gitlab. Then, a merge request is submitted to merge these changes to the master branch of the repository. The merge request is reviewed and approved, while the working branch is deleted after serving its purpose.</p>
+<p><a href="https://vimeo.com/701594994">Video tutorial: working collaboratively with git</a></p>
+<p><em>Disclaimer: the above video will not load for external users.</em></p>
+<p><strong>In GitLab</strong>, click on "Branches" in the "Repository" menu on the left hand side.</p>
+<ul>
+<li>Click the "New branch" blue button.</li>
+<li>Type a suitable name for your branch.</li>
+<li>Create from master. Click "Create branch"</li>
+</ul>
+<p><strong>In the command prompt</strong>, navigate to your repository folder, using <code>cd &lt;folder_name&gt;</code></p>
+<ul>
+<li><code>git pull</code></li>
+<li><code>git branch -a</code> to see all the available branches, including the one you just created</li>
+<li><code>git checkout &lt;branch name&gt;</code></li>
+</ul>
+<p><strong>In your editor</strong> Make your code changes</p>
+<ul>
+<li>Save the changes</li>
+</ul>
+<p><strong>In the command prompt</strong>, <code>git status</code> to check which files you've altered</p>
+<ul>
+<li><code>git add.</code> if you're happy to add all the changed files, or <code>git add &lt;file_name&gt;</code> if you just want one file.</li>
+<li><code>git commit -m "comment on what you've changed"</code></li>
+<li><code>git push</code></li>
+</ul>
+<p><strong>In GitLab</strong>, click on "Merge requests" in the left hand menu.</p>
+<ul>
+<li>Click the "New merge request" blue button.</li>
+<li>Choose the branch you want to merge and the target branch (usually master)</li>
+<li>Write a description which will be helpful to the reviewer.</li>
+<li>Assign a reviewer.</li>
+<li>Tick "Delete source branch when merge request is accepted"</li>
+<li>Click the "Create merge request" blue button.</li>
+<li>Review code changes with the reviewer, and ask the reviewer to accept the merge request.</li>
+</ul>
+<p><strong>In the command prompt</strong>, <code>git checkout master</code>, <code>git pull</code> to get the latest code.</p>
+<ul>
+<li>delete the branch locally, with <code>git branch -D &lt;branch_name&gt;</code></li>
+<li><code>git branch -a</code> to check that your branch has been deleted.</li>
+<li><code>git checkout master</code>, then <code>git pull</code>, then open the code in Spyder to check that your changes are in the master.</li>
+</ul>
+<h2 id="resolving-merge-conflicts">Resolving merge conflicts</h2>
+<p>How to update your branch to the latest version of the master branch, managing conflicts, merge request conflicts and review:</p>
+<div class="admonition info">
+<p class="admonition-title">Internal to NHS Digital</p>
+<p>Video tutorial: <strong>handling and avoiding merge conflicts</strong></p>
+<p>This video can be found internal to NHS Digital within the RAP community of practice MS Teams page under:</p>
+<p>Files &gt; COP video tutorials &gt; git merges and conflicts</p>
+</div>
+<h3 id="how-to-resolve-merge-conflicts-using-git-if-they-occur">How to resolve merge conflicts using git - if they occur</h3>
+<p>Follow the same steps as above, up to the point of raising the merge request.
+Before raising a merge request, you should see if there are likely to be any conflicts between the changes you've made and changes another developer might have made to the same files.</p>
+<ul>
+<li><strong>In the command prompt</strong>, navigate to your repository folder, using <code>cd &lt;folder_name&gt;</code> if you are not already there.</li>
+<li><code>git checkout master</code></li>
+<li><code>git pull</code> to get the latest version of the master.</li>
+<li><code>git checkout &lt;branch_name&gt;</code> if you do not already have it checked out.</li>
+<li><code>git merge master</code></li>
+</ul>
+<p>This will attempt to automatically merge the latest version of the master into your branch. If no-one else has changed the same lines of code as you, this will be fine and you can continue to raising a merge request as above.
+If not, you will get an error: <code>Automatic merge failed</code>, <code>Merge conflict in &lt;file name&gt;</code> and <code>CONFLICT</code> messages will appear on the terminal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Auto-merging practice/temperatures_function.py
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>CONFLICT (content): Merge Conflict in practice/temperatures_function.py
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Automatic merge failed; fix conflicts and then commit the result.
+</code></pre></div>
+<p>Different editors give us different tools for handling these merge conflicts, though the principles remain the same.</p>
+<h3 id="spyder">Spyder</h3>
+<ul>
+<li><strong>In Spyder</strong>, open that file (in this case temperatures_function.py).</li>
+<li>Scroll in the document to find the conflict. You will notice these strange lines where conflict has occurred:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>This line is the line in my branch.
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>=======
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>This line is the line in master.
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>&gt;&gt;&gt;&gt;&gt;&gt; master
+</code></pre></div>
+<p>The top bit above the double line is what we have in our branch (our branch is represented by the <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> statement). The bottom bit is the same line but it's saved in the master branch (symbolised as <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; master</code>). To resolve the conflict, delete the line which you do not wish to keep, including the arrows and double lines. So for example, if you wish to keep <code>This line is the line in my branch</code> delete everything that's connected to the conflict so that it also shows this in your text editor:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>This line is the line in my branch.
+</code></pre></div>
+<h3 id="vscode">VSCode</h3>
+<ul>
+<li><strong>In Visual Studio Code</strong>, you can open your file browser in the tools tab. Any files which have a merge conflict will have a little 'C' next to them here. Open the files which have these conflicts (in this case temperatures_function.py).</li>
+<li>Scroll in the document to find the conflict. You will notice these strange lines where conflict has occurred:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>This line is the line in my branch.
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>=======
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>This line is the line in master.
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>&gt;&gt;&gt;&gt;&gt;&gt; master
+</code></pre></div>
+<p>The top bit above the double line is what we have in our branch (our branch is represented by the <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> statement). This will be called the <em>current change</em>. The bottom bit is the same line but it's saved in the master branch (symbolised as <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; master</code>). This will be called the <em>incoming change</em>. Above the conflict, you'll see some options for what you can do. You can click <code>accept current changes</code>, <code>accept incoming changes</code>, or <code>accept both changes</code>. Picking one of these options will resolve the conflict. Alternatively, you can go ahead and simply edit the conflicted file directly. Edit the area of conflict until you're satisfied -- making sure to remove the <code>===</code> line, the <code>&gt;&gt;&gt;&gt;&gt;</code> line, and any duplicated code.
+So for example, if you wish to keep <code>This line is the line in my branch</code> delete everything that's connected to the conflict so that it also shows this in your text editor:
+When your're done, simply save the file.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>This line is the line in my branch.
+</code></pre></div>
+<h3 id="once-the-conflict-is-resolved">Once the Conflict is Resolved</h3>
+<ul>
+<li>Save your changes, and then update your branch in the usual way:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git status
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>git add .
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>git status
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>git commit -m &quot;your message here&quot;
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>git status
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>git push
+</code></pre></div>
+<ul>
+<li><strong>In GitLab</strong> create a merge request and get it approved.</li>
+</ul>
+<h2 id="git-branching">Git branching</h2>
+<h3 id="branch-naming-strategy">Branch naming strategy</h3>
+<p>Following an agreed naming convention will make it much easier to keep the team's work organised. We follow use this approach:</p>
+<div class="highlight"><pre><span></span><code>&lt;project_id&gt;_&lt;initials&gt;_&lt;ticket_number&gt;_&lt;brief-description&gt;
+</code></pre></div>
+<p>Here the project_id refers to our project ID in confluence (DS218). The initials are from my name. The ticket number refers to the jira ticket number.
+E.g.:</p>
+<div class="highlight"><pre><span></span><code>DS218_CQ_167_Add-field-definitions
+</code></pre></div>
+<p>Naming branches in this way helps to make it very clear what change should be happening in the branch. Sometimes code review will reveal that a branch that was intended to make one specific change in fact makes several changes. This should be avoided and the code review should reject the additional changes.</p>
+<h3 id="general-guidelines-for-branching-and-merge-requests">General guidelines for branching and merge requests</h3>
+<p>The master branch should be kept in a good stable state (always deployable with a relevant README file).
+Developers create feature branches from the master branch (main trunk) and work on them.
+The developer only creates a short-lived feature branch (a branch from the trunk) to prevent the challenge of merging later on. Once they are done, they create merge requests in GitLab.
+The request get reviews by a team member or a group of developers (if it is a refactor or large changes). The comment on changes stay directly on the GitLab page and there may have discussions.
+Once these are done with compiling and all testing, the merge will be incorporated into the trunk by the reviewer.</p>
+<p><a class="glightbox" href="../../../images/git_branching.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/git_branching.png" /></a></p>
+<h2 id="using-git-collaboratively-exercise">Using git collaboratively exercise</h2>
+<h3 id="team-exercise">Team exercise</h3>
+<p>This group exercise is designed for a team of four.</p>
+<p>Everyone, independently, do the following:</p>
+<p><strong>In GitLab</strong>, create a new branch from the master branch.</p>
+<p><strong>In the command prompt</strong>, checkout your new branch (<code>git branch -a</code>, <code>git checkout &lt;branch_name&gt;</code>, <code>git pull</code>)
+Make your code changes:</p>
+<ul>
+<li><strong><em>Team member A</em></strong>: If result &lt; 0, print("You'll freeze today")</li>
+<li><strong><em>Team member B</em></strong>: If result &gt; 100, print("You'll boil today")</li>
+<li><strong><em>Team member C</em></strong>: Change the name of the variable "result" to "temperature"</li>
+<li><strong><em>Team member D</em></strong>: Change the warning "you'd better wear suncream" to "you'd better wear a "t-shirt"</li>
+</ul>
+<p>Commit your changes (<code>git status</code>, <code>git add.</code>, <code>git commit -m "comment"</code>, <code>git push</code>)</p>
+<p><strong>In GitLab</strong>, <strong><em>Team member A</em></strong> create a new merge request. Assign a reviewer and accept the merge.</p>
+<p><em>Approving merge requests requires someone with the relevant assigned role and permissions.</em></p>
+<p><strong>In the command prompt</strong>, <strong><em>Team member B</em></strong> checkout the master and attempt to merge it into your branch. (<code>git checkout master</code>, <code>git pull</code>, <code>git checkout &lt;branch_name&gt;</code>, <code>git merge master</code>)</p>
+<p><strong>In Spyder or VSCode</strong> open the file where there are any conflicts and decide with <strong><em>team member B</em></strong> how the conflicts should be resolved.</p>
+<p>Save your changes</p>
+<p><strong>In the command prompt</strong>, update your branch in the usual way. (<code>git status</code>, <code>git add.</code>, <code>git status</code>, <code>git commit -m "comment"</code>, <code>git status</code>, <code>git push</code>)</p>
+<p><strong>In GitLab</strong>, <strong><em>Team member B</em></strong> create a new merge request. Assign a reviewer and accept the merge.</p>
+<p>Repeat previous 5 steps for <strong><em>Team member C</em></strong> and <strong><em>Team member D</em></strong></p>
+<h2 id="top-tips-for-git">Top tips for git</h2>
+<ul>
+<li><mark><strong>Branches should be short-lived</strong></mark></li>
+<li>Make clean, single-purpose commits</li>
+<li>Test Before You Commit</li>
+<li>Write meaningful commit messages</li>
+<li>Don’t git push straight to master</li>
+<li>Commit early, commit often</li>
+<li>Don’t alter published history</li>
+<li>Don’t commit generated files</li>
+</ul>
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+      </main>
+      
+        <head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+ <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<!-- Code for the next arrow from Material for MkDocs -->
+<footer class="md-footer">
+   
+  <nav
+    class="md-footer__inner md-grid"
+    aria-label="Footer"
+    
+  >
+     
+    <a
+      href="../intro-to-git/"
+      class="md-footer__link md-footer__link--prev"
+      aria-label="Previous: Intro to Git"
+      rel="prev"
+    >
+      <div class="md-footer__button md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </div>
+      <div class="md-footer__title">
+        <div class="md-ellipsis">
+          <span class="md-footer__direction"> Previous </span>
+          Intro to Git
+        </div>
+      </div>
+    </a>
+      
+    <a
+      href="../githooks/"
+      class="md-footer__link md-footer__link--next"
+      aria-label="Next: Git Hooks"
+      rel="next"
+    >
+      <div class="md-footer__title">
+        <div class="md-ellipsis">
+          <span class="md-footer__direction"> Next </span>
+          Git Hooks
+        </div>
+      </div>
+      <div class="md-footer__button md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+      </div>
+    </a>
+    
+  </nav>
+  
+</footer>
+
+<footer class="footer">
+  <div class="footer_left">
+    <a href="mailto:datascience@nhs.net"><p>Contact Us</p></a>
+    <p>Developed by <a href="https://digital.nhs.uk/">NHS Digital</a></p>
+    <p>
+      View the project on
+      <a href="https://github.com/NHSDigital/rap-community-of-practice"
+        >GitHub</a
+      >
+    </p>
+  </div>
+
+  <div class="legal">
+    <div class="footer_left">
+    <p>&copy; 2022 Crown Copyright (NHS Digital)</p>
+    <p>All content is available under the
+        <a
+          href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+          >Open Government Licence v3.0</a
+        >, except where otherwise stated.
+      </p>    
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["search.share", "content.code.annotate", "content.tabs.link", "navigation.tabs", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

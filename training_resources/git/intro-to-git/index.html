@@ -1,0 +1,2596 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../images/favicon/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>Intro to Git - Data Viz Community of Practice</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+      
+  
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--<type>:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2 1 21Z"/></svg>');}</style>
+
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arial:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Arial";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#intro-to-git" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to configuration -->
+
+
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+<!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+
+    <!-- Link to home -->
+    <a
+      href="../../.."
+      title="Data Viz Community of Practice"
+      class="md-header__button md-logo-nhs"
+      aria-label="Data Viz Community of Practice"
+      data-md-component="logo"
+    >
+      
+  <img src="../../../images/logo/nhs-blue-on-white.jpg" alt="logo">
+
+    </a>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Data Viz Community of Practice
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Intro to Git
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette -->
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+
+    <!-- Repository information -->
+    
+      <div class="md-header__source">
+        <a href="https://github.com/p-jacques/data-viz-community-of-practice" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Data Viz Community of Practice
+  </div>
+</a>
+      </div>
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../about/" class="md-tabs__link">
+      About
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../dashboard_lifecycle/" class="md-tabs__link">
+        Dashboard lifecycle
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../dashboard_design/" class="md-tabs__link">
+        Dashboard design
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../implementing_RAP/rap-readiness/" class="md-tabs__link">
+        QA & Testing
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        Training resources
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../support/" class="md-tabs__link">
+      Support
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../glossary/" class="md-tabs__link">
+      Glossary
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../useful_links/" class="md-tabs__link">
+      Useful links
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../acknowledgements/" class="md-tabs__link">
+      Acknowledgements
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Data Viz Community of Practice" class="md-nav__button md-logo" aria-label="Data Viz Community of Practice" data-md-component="logo">
+      
+  <img src="../../../images/logo/nhs-blue-on-white.jpg" alt="logo">
+
+    </a>
+    Data Viz Community of Practice
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/p-jacques/data-viz-community-of-practice" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Data Viz Community of Practice
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../dashboard_lifecycle/">Dashboard lifecycle</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Dashboard lifecycle" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Dashboard lifecycle
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_lifecycle/planning_cycle/" class="md-nav__link">
+        Planning cycle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_lifecycle/sketches_wireframes_prototypes/" class="md-nav__link">
+        Sketches, Wireframes and Prototypes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../dashboard_design/">Dashboard design</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Dashboard design" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Dashboard design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/principles/" class="md-nav__link">
+        Principles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/layout/" class="md-nav__link">
+        Layout & navigation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/typography/" class="md-nav__link">
+        Typography
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/colours/" class="md-nav__link">
+        Colours
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/icons/" class="md-nav__link">
+        Icons & logos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/filters/" class="md-nav__link">
+        Filters & buttons
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/kpis/" class="md-nav__link">
+        KPIs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/chart_types/" class="md-nav__link">
+        Chart types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/tables/" class="md-nav__link">
+        Table design
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/tooltips/" class="md-nav__link">
+        Tooltips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dashboard_design/guidance/" class="md-nav__link">
+        Guidance & info page
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          QA & Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="QA & Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          QA & Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/rap-readiness/" class="md-nav__link">
+        Are you ready for RAP?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/code-review/" class="md-nav__link">
+        Code review
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/coding-best-practice/" class="md-nav__link">
+        Coding best practice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/when-to-stop-coding/" class="md-nav__link">
+        When to stop coding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/how-to-publish-your-code-in-the-open/" class="md-nav__link">
+        How to publish your code in the open
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/updating-your-published-code/" class="md-nav__link">
+        Updating published code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/accessibility-how-to/" class="md-nav__link">
+        Guidance on accessibility
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/quality-assuring-analytical-outputs/" class="md-nav__link">
+        Quality assuring analytical outputs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/technical-workflow/" class="md-nav__link">
+        Technical workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/notebooks_versus_ide_development/" class="md-nav__link">
+        Notebooks vs IDE development
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/tidy-data/" class="md-nav__link">
+        Tidy data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../implementing_RAP/tools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Training resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Training resources" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Training resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_1" type="checkbox" id="__nav_6_1" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6_1">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Intro to Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Intro to Git
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-version-control" class="md-nav__link">
+    What is version control?
+  </a>
+  
+    <nav class="md-nav" aria-label="What is version control?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-should-i-care" class="md-nav__link">
+    Why should I care?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glossary-of-terms" class="md-nav__link">
+    Glossary of terms
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video-showing-git-workflow-and-commands" class="md-nav__link">
+    Video showing Git workflow and commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-basic-commands" class="md-nav__link">
+    Common basic commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Common basic commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#undoing-changes-via-git-commands" class="md-nav__link">
+    Undoing changes via Git commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-terminal" class="md-nav__link">
+    What is a terminal?
+  </a>
+  
+    <nav class="md-nav" aria-label="What is a terminal?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#useful-commands" class="md-nav__link">
+    Useful commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-for-git-basics-exercise" class="md-nav__link">
+    Setup for Git Basics exercise
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup for Git Basics exercise">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-your-access-token" class="md-nav__link">
+    Creating your access token
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting-credentials" class="md-nav__link">
+    Troubleshooting credentials
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intro-exercises" class="md-nav__link">
+    Intro Exercises
+  </a>
+  
+    <nav class="md-nav" aria-label="Intro Exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-creating-your-local-git-repository-folder" class="md-nav__link">
+    1. Creating your local git repository folder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-git-clone-copydownload-a-gitlab-repository" class="md-nav__link">
+    2. Git clone (copy/download a GitLab repository)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-and-switch-to-a-new-branch" class="md-nav__link">
+    3. Create and switch to a new branch
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Create and switch to a new branch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#branch-naming-strategy" class="md-nav__link">
+    Branch naming strategy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-add-a-new-file" class="md-nav__link">
+    4. Add a new file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-vs-code-users" class="md-nav__link">
+    For VS Code users
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-spyder-users" class="md-nav__link">
+    For Spyder users
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-commit-your-changes-follow-basic-git-command-workflow" class="md-nav__link">
+    5. Commit your changes (follow basic git command workflow)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-check-the-repository-on-gitlab-to-view-the-changes-updated" class="md-nav__link">
+    6. Check the repository on GitLab to view the changes updated
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-submit-a-merge-request" class="md-nav__link">
+    How to submit a merge request
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mark-your-merge-request-as-a-draft-on-gitlab" class="md-nav__link">
+    Mark your merge request as a draft on GitLab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-accept-a-merge-request-on-gitlab" class="md-nav__link">
+    How to accept a merge request on GitLab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-update-your-local-master-branch-to-the-latest-remote-master-version-on-gitlabgithub" class="md-nav__link">
+    How to update your local master branch to the latest remote master version on GitLab/Github
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-gitignore-file" class="md-nav__link">
+    The .gitignore file
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-git-collaboratively/" class="md-nav__link">
+        Using Git collaboratively
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../githooks/" class="md-nav__link">
+        Git Hooks
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" type="checkbox" id="__nav_6_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6_2">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/intro-to-python/" class="md-nav__link">
+        Intro to python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/basic-python-data-analysis-operations/" class="md-nav__link">
+        Basic Python data analysis operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python-functions/" class="md-nav__link">
+        Python functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/visualisation-in-python/" class="md-nav__link">
+        Visualisation in Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/handling-file-paths/" class="md-nav__link">
+        Handling file paths
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/logging-and-error-handling/" class="md-nav__link">
+        Logging and error handling in Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/project-structure-and-packaging/" class="md-nav__link">
+        Project structure and packaging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/using-f-strings-sql-queries/" class="md-nav__link">
+        Using Python f-strings to run SQL queries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2_9" type="checkbox" id="__nav_6_2_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6_2_9">
+          Virtual environments
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Virtual environments" data-md-level="3">
+        <label class="md-nav__title" for="__nav_6_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Virtual environments
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/virtual-environments/why-use-virtual-environments/" class="md-nav__link">
+        Why use virtual environments?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/virtual-environments/venv/" class="md-nav__link">
+        Venv
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/virtual-environments/conda/" class="md-nav__link">
+        Conda
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/unit-testing/" class="md-nav__link">
+        Unit testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/unit-testing-field-definitions/" class="md-nav__link">
+        Unit testing field definitions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/backtesting/" class="md-nav__link">
+        Back testing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" type="checkbox" id="__nav_6_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../pyspark/">PySpark</a>
+          
+            <label for="__nav_6_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="PySpark" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          PySpark
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pyspark/logging-and-error-handling/" class="md-nav__link">
+        Logging and error handling in PySpark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pyspark/pyspark-style-guide/" class="md-nav__link">
+        PySpark style guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pyspark/pyspark-tutorial.py" class="md-nav__link">
+        Download our PySpark tutorial
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pyspark/efficient-pyspark-case-study.ipynb" class="md-nav__link">
+        Efficient Pyspark case study
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_4" type="checkbox" id="__nav_6_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../R/">R</a>
+          
+            <label for="__nav_6_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="R" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_4">
+          <span class="md-nav__icon md-icon"></span>
+          R
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../R/git_with_RStudio/" class="md-nav__link">
+        Git with RStudio
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support/" class="md-nav__link">
+        Support
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../useful_links/" class="md-nav__link">
+        Useful links
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../acknowledgements/" class="md-nav__link">
+        Acknowledgements
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-version-control" class="md-nav__link">
+    What is version control?
+  </a>
+  
+    <nav class="md-nav" aria-label="What is version control?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-should-i-care" class="md-nav__link">
+    Why should I care?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glossary-of-terms" class="md-nav__link">
+    Glossary of terms
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video-showing-git-workflow-and-commands" class="md-nav__link">
+    Video showing Git workflow and commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-basic-commands" class="md-nav__link">
+    Common basic commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Common basic commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#undoing-changes-via-git-commands" class="md-nav__link">
+    Undoing changes via Git commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-terminal" class="md-nav__link">
+    What is a terminal?
+  </a>
+  
+    <nav class="md-nav" aria-label="What is a terminal?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#useful-commands" class="md-nav__link">
+    Useful commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-for-git-basics-exercise" class="md-nav__link">
+    Setup for Git Basics exercise
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup for Git Basics exercise">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-your-access-token" class="md-nav__link">
+    Creating your access token
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting-credentials" class="md-nav__link">
+    Troubleshooting credentials
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intro-exercises" class="md-nav__link">
+    Intro Exercises
+  </a>
+  
+    <nav class="md-nav" aria-label="Intro Exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-creating-your-local-git-repository-folder" class="md-nav__link">
+    1. Creating your local git repository folder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-git-clone-copydownload-a-gitlab-repository" class="md-nav__link">
+    2. Git clone (copy/download a GitLab repository)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-and-switch-to-a-new-branch" class="md-nav__link">
+    3. Create and switch to a new branch
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Create and switch to a new branch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#branch-naming-strategy" class="md-nav__link">
+    Branch naming strategy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-add-a-new-file" class="md-nav__link">
+    4. Add a new file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-vs-code-users" class="md-nav__link">
+    For VS Code users
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-spyder-users" class="md-nav__link">
+    For Spyder users
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-commit-your-changes-follow-basic-git-command-workflow" class="md-nav__link">
+    5. Commit your changes (follow basic git command workflow)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-check-the-repository-on-gitlab-to-view-the-changes-updated" class="md-nav__link">
+    6. Check the repository on GitLab to view the changes updated
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-submit-a-merge-request" class="md-nav__link">
+    How to submit a merge request
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mark-your-merge-request-as-a-draft-on-gitlab" class="md-nav__link">
+    Mark your merge request as a draft on GitLab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-accept-a-merge-request-on-gitlab" class="md-nav__link">
+    How to accept a merge request on GitLab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-update-your-local-master-branch-to-the-latest-remote-master-version-on-gitlabgithub" class="md-nav__link">
+    How to update your local master branch to the latest remote master version on GitLab/Github
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-gitignore-file" class="md-nav__link">
+    The .gitignore file
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  <a href="https://github.com/p-jacques/data-viz-community-of-practice/edit/main/docs/training_resources/git/intro-to-git.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="intro-to-git">Intro to Git</h1>
+<h2 id="overview">Overview</h2>
+<p>This page is intended as a starting point for someone who is new to using git. It shows you the basic commands and the workflow to use git on your own.</p>
+<p>To use git as a team you should complete this section and the following section on <a href="../using-git-collaboratively/">using Git collaboratively</a>.</p>
+<h2 id="what-is-version-control">What is version control?</h2>
+<p>Version control is the practice of tracking and managing any changes on project's code, files or folders over time. This allows you to observe a detailed history of the changes made and enables your team members to collaborate on the same project.</p>
+<p>In Git, each user has the entire repository (project's working directory) on their computer (offline), hence, they can work separately offline until they opt to push their updated version of the code to the remote (online) central repository.</p>
+<p>Remote repositories are versions of your project that are hosted on an online Version Control System. In NHS Digital, we store that in GitLab site for internal users (GitHub site for the public).</p>
+<h3 id="why-should-i-care">Why should I care?</h3>
+<p>Using version control is one of the fundamental skills needed by analysts to produce high-quality analytical outputs. Git is <strong>the standard</strong> for tracking code over time and is the way that NHS Digital has chosen. While git has a steep initial learning curve, the payoff is huge and so we strongly recommend taking the time to learn this as a team.</p>
+<p>The benefits of using version control include:</p>
+<ul>
+<li>Understanding what happened in the past. E.g., what did we change last time we ran this code</li>
+<li>Restoring previous versions</li>
+<li>Tracking changes - avoid accidentally breaking code</li>
+<li>The ability to review someone's changes and to leave comments</li>
+<li>The ability to plan development work more effectively through being able to assign small, discrete changes</li>
+<li>Avoid code being hidden away on someone's machine</li>
+<li>The ability to set up an approval process for changes</li>
+<li>The ability to make changes without breaking anything - through running automated tests</li>
+<li>The ability to try out experiments without the risk of breaking your main code</li>
+</ul>
+<h2 id="glossary-of-terms">Glossary of terms</h2>
+<p>Here's a list of commonly used Git terms, that will help you understand the technical jargon mentioned in the next sections:</p>
+<ul>
+<li><a href="https://www.javatpoint.com/git-terminology">Git terminology</a></li>
+</ul>
+<h2 id="video-showing-git-workflow-and-commands">Video showing Git workflow and commands</h2>
+<p>This short video tutorial walks you through how to create a repository and use basic Git commands:</p>
+<p><a href="https://vimeo.com/678267338">Link to video tutorial</a></p>
+<p>We have also produced a short video that gives some more theoretical explanation of how version control works:</p>
+<p><a href="https://vimeo.com/678169794">Link to video</a></p>
+<h2 id="common-basic-commands">Common basic commands</h2>
+<p>Below is a list of common commands for reference. We only list basic commands here. This is just to flag to you that these commands exist. You can google for more detail on any of them.</p>
+<ul>
+<li>
+<p><a href="https://training.github.com/downloads/github-git-cheat-sheet/">Git commands cheat-sheet</a></p>
+</li>
+<li>
+<p>Create a new git repo locally: <code>git init</code>. The init command is short for "initialise", it's the command that will do all of the initial setup of a repository. The folder needs to actually exist before we can create a new repository with Git.</p>
+</li>
+<li>
+<p>Clone an existing Git Repository: <code>git clone &lt;url&gt;</code>. Happens only once, when you need to create a local copy of a GitLab repository.</p>
+</li>
+<li>
+<p>Check whether any files have changed in a repository: <code>git status</code>. It lists the files you've changed and those you still need to add or commit. It displays the state of the working directory and the staging area. It lets you see which changes have been staged, which haven't, and which files aren't being tracked by Git. Status output does not show you any information regarding the committed project history.</p>
+</li>
+<li>
+<p>Create and switch to a new branch: <code>git checkout -b &lt;your branch name&gt;</code>.</p>
+</li>
+<li>
+<p>Check out a branch: <code>git checkout &lt;your branch name.</code>. Check out an existing new branch.</p>
+</li>
+<li>
+<p>Add file contents/stages changes from the working directory to the index: <code>git add &lt;filename&gt;</code> or <code>git add .</code></p>
+</li>
+<li>
+<p>Commit staged files with a message: <code>git commit -m "&lt;message&gt;"</code>. Committing changes in this way captures a snapshot of the project's currently staged changes. Committed snapshots can be thought of as “safe” versions of a project</p>
+</li>
+<li>
+<p>Update your branch with the online/remote branch info: <code>git pull</code>. Pulls the latest changes from the repository, only affects the current active branch you’re in.</p>
+</li>
+<li>
+<p>Check the history of commits: <code>git log</code>.</p>
+</li>
+<li>
+<p>Show unstaged changes between your index and working directory: <code>git diff</code>. Press <code>Q</code> to exit the diff log.</p>
+</li>
+<li>
+<p>Ignore files: <code>.git-ignore file</code>. This file specifies untracked files that git should ignore such as the sensitive information related to security or the data itself. Files already tracked by git are not affected.</p>
+</li>
+<li>
+<p>Display a list of all branches in the repository: <code>git branch -a</code>.</p>
+</li>
+<li>
+<p>Delete a local branch: <code>git branch -D &lt;your branch name&gt;</code>.</p>
+</li>
+</ul>
+<h3 id="undoing-changes-via-git-commands">Undoing changes via Git commands</h3>
+<p>GitLab has a guide covering various cases on undoing any changes: <a href="https://docs.gitlab.com/ee/topics/git/numerous_undo_possibilities_in_git/">undo possibilities in Git</a>.</p>
+<h2 id="what-is-a-terminal">What is a terminal?</h2>
+<p>A terminal acts like a mediator, takes text input (a command) and returns an output (a process, a result, an action) that depends on the command input's process. Command line terminals can be used to input commands that refer to file directories, list of directories and/or moving folder and files but also for version control (Git) and creating isolated environments (conda, venv etc).</p>
+<p>Anaconda prompt is very similar to other command line terminals (e.g. Windows Command Prompt), but allows you to use Anaconda commands, which do not work in other terminals on Windows.</p>
+<p>Different terminals use slightly different languages, and so you may find that if you're used to the terminal on a Mac, you need different commands when working on a Windows machine. Some terminals allow you to workaround this- such as <a href="https://www.atlassian.com/git/tutorials/git-bash#:~:text=What%20is%20Git%20Bash%3F,operating%20system%20through%20written%20commands.">Git Bash</a>. Git Bash works on Windows, but emulates the most common terminal experience on a Mac or Linux, allowing to use the same commands.</p>
+<h3 id="useful-commands">Useful commands</h3>
+<ul>
+<li>Anaconda Prompt takes most or all of the commands that Windows Command Prompt takes, but also includes Conda-specific commands: <a href="https://docs.conda.io/projects/conda/en/latest/commands.html">Command reference</a>.</li>
+<li>For new starters and for the purposes of this guide, <code>dir</code> (list of files within the directory) and <code>cd</code> (change directory) are the major terminal commands required for Anaconda Prompt.</li>
+</ul>
+<p>Example of Windows vs Linux commands differences:</p>
+<ul>
+<li>list files - <code>dir</code> (Windows, incl. Anaconda Prompt) - <code>ls</code> (mac, linux)</li>
+<li>change directory - <code>cd</code></li>
+<li>display current directory - <code>pwd</code> (mac, linux) - <code>chpwd</code> or <code>%cd%</code> (Windows)</li>
+<li>List of other <a href="https://www.geeksforgeeks.org/linux-vs-windows-commands/">command differences</a></li>
+</ul>
+<p>For more info on conda virtual environments see <a href="../../python/virtual-environments/conda/">here</a>.</p>
+<h2 id="setup-for-git-basics-exercise">Setup for Git Basics exercise</h2>
+<h3 id="creating-your-access-token">Creating your access token</h3>
+<p>When cloning a Git repository from a web-hosted repository platform such as GitHub or GitLab for the first time, you will be prompted to input your credentials, which is usually your username and password. Where two-factor authentication is enabled, and for internal repository platforms, you will need to generate an access token which you use as your password.</p>
+<blockquote>
+<p>For NHS Digital employees using our internal GitLab, your username is your GitLab username and your password is your access token.</p>
+</blockquote>
+<ul>
+<li>In Gitlab, navigate to Preferences by clicking the top right profile picture:</li>
+</ul>
+<p><a class="glightbox" href="../../../images/image1.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/image1.jpg" /></a></p>
+<ul>
+<li>On the left hand side menu select Access token. You should see this page after clicking:</li>
+</ul>
+<p><a class="glightbox" href="../../../images/image21.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/image21.jpg" /></a></p>
+<ul>
+<li>Add a token name, select all boxes for the scope, leave the date blank (token will never expire) and select Create Access Token. The access token that will appear at the top of the page needs to saved in a text document (Notepad etc).</li>
+</ul>
+<h3 id="troubleshooting-credentials">Troubleshooting credentials</h3>
+<p>You might see something like this at any point:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>remote: HTTP Basic: Access denied
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>remote: You must use a personal access with &#39;read_repository or &#39;write_repository&#39; scope for Git over HTTP.
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>remote: You can generate one at https:// etc etc...
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>remote: Authentication failed for &#39;repository address you&#39;re attempting to git clone&#39;
+</code></pre></div>
+<p>This can mean a number of things: either your access token has expired or you have entered the wrong access token for your password (or username even). If your access token has expired or about to expire, you can check by going to GitLab Profile -&gt; Preferences -&gt; Access Tokens then scroll all the way down and see if there’s an Active Access Token and check the expiration date.</p>
+<ul>
+<li>
+<p>These steps will help you fix your access to the repository:</p>
+</li>
+<li>
+<p>To fix this we need to create a new access token (don’t assign a date this time, so it will never expire).</p>
+</li>
+<li>
+<p>In the command terminal type <code>git pull -v</code> (v stands for verification). This should prompt a new git credentials window.</p>
+</li>
+<li>
+<p>If you don't have an existing repository, and can't do step 2, then:</p>
+</li>
+<li>
+<p>In the terminal type <code>git clone &lt;git repo copied clone url&gt;</code> but with the new credentials included in the URL, so:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>C:\My_documents&gt;git clone https://&lt;username&gt;:&lt;password&gt;@&lt;domain&gt;/example.git
+</code></pre></div>
+<p>So, in my case it would be:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>C:\My_documents&gt;git clone https://&lt;username&gt;:&lt;MY_NEW_ACCESS_TOKEN&gt;@&lt;domain&gt;/example.git
+</code></pre></div>
+<h2 id="intro-exercises">Intro Exercises</h2>
+<p>Complete tasks 1 - 6: Accessing a git repository, creating a branch, adding a new file, uploading your changes to GitLab</p>
+<p><strong>Getting started</strong> - tasks 1 and 2 will be relevant only when accessing a repository for the <strong>first time</strong>.</p>
+<ul>
+<li>If stuck at any point feel free to go through the video tutorials mentioned in the previous sections of this guide).</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Internal to NHS Digital</p>
+<p>If stuck on <strong>creating an access token</strong>, there is a video which can be found internal to NHS Digital within the RAP community of practice MS Teams page under:</p>
+<p>Files &gt; COP video tutorials &gt; Create GitLab access token</p>
+</div>
+<h3 id="1-creating-your-local-git-repository-folder">1. Creating your local git repository folder</h3>
+<p>i. Open a Command terminal. This can be any terminal, Anaconda Prompt or Git Bash etc. To access the terminal, click the Search option on the Windows toolbar and type "Anaconda Prompt" and open it. The file directory address that's displayed in the terminal will usually be the default top level C drive address or something similar.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>(base) C:\Windows\system32&gt;
+</code></pre></div>
+<p>ii. Create a folder in your local directory, this is where the GitLab (remote) repository will be copied/downloaded to. In the Anaconda Prompt terminal type <code>cd &lt;windows explorer repo folder address you just created&gt;</code>, <code>cd</code> stands for Change Directory, and what this means is that the default terminal address will be directed to the new directory, the new folder address. Any git commands applied in the terminal will apply to the current directory.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>(base) C:\Windows\system32&gt;cd C:\Users\&lt;username&gt;\Documents\my_project_folder\RAP
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>(base) C:\Users\&lt;username&gt;\Documents\my_project_folder\RAP&gt;
+</code></pre></div>
+<h3 id="2-git-clone-copydownload-a-gitlab-repository">2. Git clone (copy/download a GitLab repository)</h3>
+<p>i. The repository's clone URL will be on the GitLab repository's main page (see image below).</p>
+<p>[Git demo repo with practice exercises]</p>
+<p><a class="glightbox" href="../../../images/repo_url.JPG" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/repo_url.JPG" /></a></p>
+<p>ii. Type <code>git clone &lt;repository's clone url&gt;</code> the git-demo repository using your local terminal (Anaconda Prompt). Enter your credentials when prompted (GitLab username and access token for the password.)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>(base) C:\Users\&lt;username&gt;\Documents\my_project_folder\RAP&gt;git clone &lt;paste the repo url address from the image above&gt;
+</code></pre></div>
+<p>iii. Type <code>cd &lt;windows explorer repo folder address&gt;</code> (open the newly downloaded git folder) in the Anaconda Prompt to assign the root level of the directory to the top level of the repository. This because the terminal is assigned to the folder containing the git repository, not the folder that IS the git repository.</p>
+<p>iv. Type <code>git status</code> in the terminal. You should see the this message:</p>
+<p><a class="glightbox" href="../../../images/image3.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/image3.jpg" /></a></p>
+<h3 id="3-create-and-switch-to-a-new-branch">3. Create and switch to a new branch</h3>
+<p>Notice how in the image above, the first line says "On branch master". In Git, <strong>"master"</strong> is a naming convention for a branch. After cloning (downloading) a project from a remote server, the resulting local repository has a single local branch: the so-called "master" branch. This means that "master" can be seen as a repository's "default" branch. The master should always be locked, to protect the main build of your working code and/or documentation. To add new code/documentation/make any edits to the master branch, you need to submit a <a href="#how-to-submit-a-merge-request">merge request</a>.</p>
+<p><strong>"Branch"</strong> is another word for "version". Usually when developing a document or slides for a presentation, we could have numerous versions of the same slides, with small or major differences. By using different branches (or versions) of the same code, we can safely work and test without breaking the publication code, that resides in the default master branch of the repository.</p>
+<p>i. To create a <strong>new branch</strong>, head over to GitLab, on the repository's main page, same webpage we used to find the git clone repository's URL. On the left hand side menu select Repository -&gt; Branches.</p>
+<p><a class="glightbox" href="../../../images/select_branches.JPG" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/select_branches.JPG" /></a></p>
+<p>ii. Once in the branches list page, select New Branch (big blue button) on the right hand side.</p>
+<p><a class="glightbox" href="../../../images/new_branch.JPG" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/new_branch.JPG" /></a></p>
+<p>iii. In the New Branch page, type your branch name and select the branch you want to copy from. On most cases it will be the master branch so GitLab has this option select by default. Once happy with your choices, select Create branch.</p>
+<p><a class="glightbox" href="../../../images/branch_info.JPG" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/branch_info.JPG" /></a></p>
+<p>iv. Back to the terminal (e.g. Anaconda Prompt etc), type <code>git branch -a</code> to view a list of all available branches existing in the repository. The branches that contain the <code>remote/</code> path are the branches online, on GitLab. Have a look at the list. You will notice your new branch is not there yet. To update your local master branch with all the latest updates on GitLab, type <code>git pull</code>. Type <code>git branch -a</code> and you should see your branch available in the list now.</p>
+<p>v. To start working on your branch and select, type in the terminal <code>git checkout &lt;your branch name&gt;</code>.</p>
+<p>vi. Type <code>git status</code> and this way you can confirm that you are in a new branch. Git will display a message showing the current branch name and the current branch's information.</p>
+<p><a class="glightbox" href="../../../images/image564.JPG" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/image564.JPG" /></a></p>
+<p><em><strong>Reminder:</strong> any changes you make while in the master branch won't be uploaded to GitLab, as the master branch is protected and locked, so make sure you are in your own working branch! You can confirm this with step vi. above.</em></p>
+<h4 id="branch-naming-strategy">Branch naming strategy</h4>
+<p>Following an agreed naming convention will make it much easier to keep the team's work organised. We follow use this approach:</p>
+<div class="highlight"><pre><span></span><code>&lt;project_id&gt;_&lt;initials&gt;_&lt;ticket_number&gt;_&lt;brief-description&gt;
+</code></pre></div>
+<p>Here the project_id refers to our project ID in confluence (DS218). The initials are from my name. The ticket number refers to the jira ticket number.
+E.g.:</p>
+<div class="highlight"><pre><span></span><code>DS218_CQ_167_Add-field-definitions
+</code></pre></div>
+<p>Naming branches in this way helps to make it very clear what change should be happening in the branch. Sometimes code review will reveal that a branch that was intended to make one specific change in fact makes several changes. This should be avoided and the code review should reject the additional changes.</p>
+<h3 id="4-add-a-new-file">4. Add a new file</h3>
+<p>By adding a new file to the project, you can avoid conflicts as each analyst will create and upload their own file.</p>
+<p>There are many ways to add a new file to your branch. One way is to upload a file directly to your branch on GitLab.</p>
+<p>The easiest way is to simply create the file (any type of file) in your working directory, while in your branch. You can also copy a file from another directory. The file you create or copy can be any type of file.</p>
+<h3 id="for-vs-code-users">For VS Code users</h3>
+<ol>
+<li>To open VS Code from the terminal (this will save you a few extra clicks) simply type in the Command Prompt of your choice (e.g. Anaconda Prompt/Git Bash/Powershell):</li>
+</ol>
+<p><a class="glightbox" href="../../../images/code_from_cmd.PNG" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/code_from_cmd.PNG" /></a></p>
+<ol>
+<li>Once VS Code loads, you will notice the on the left hand side panel the folder structure of the cloned repository:</li>
+</ol>
+<p><a class="glightbox" href="../../../images/vscode_file_structure.PNG" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/vscode_file_structure.PNG" /></a></p>
+<p>You can continue using the Command Prompt or you can continue with using the VS Code built in terminal. To add a new file in your repository right click in the folder structure, in this case we want to add a file in the practice folder of the repository:</p>
+<p><a class="glightbox" href="../../../images/add_file.PNG" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/add_file.PNG" /></a></p>
+<ol>
+<li>
+<p>Name the file, add a file format in the name, for example <code>.py</code> for a python file, <code>.md</code> for a markdown file etc.</p>
+</li>
+<li>
+<p>Type something in the new file!</p>
+</li>
+<li>
+<p>Save your changes within VS Code, either from the top toolbar File -&gt; Save or by <code>Ctrl + S</code>.</p>
+</li>
+</ol>
+<h3 id="for-spyder-users">For Spyder users</h3>
+<p>For this exercise, create a file while in Spyder, with simply right-clicking on the repository's folder and then selecting the Create New File option:</p>
+<p>To view and edit the repository's folders and files in Spyder:</p>
+<ol>
+<li>Open Spyder</li>
+<li>
+<p>On the top toolbar go Projects -&gt; New Project, this will open a Create New Project dialogue.</p>
+<p><a class="glightbox" href="../../../images/image4.JPG" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/image4.JPG" /></a></p>
+</li>
+<li>
+<p>In the Create New Project dialogue, select existing directory (since we have already cloned the GitLab repository to your local machine and have a folder) and in Location select the Open Folder icon to select the existing folder repository:</p>
+<p><a class="glightbox" href="../../../images/image45.JPG" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/image45.JPG" /></a></p>
+</li>
+<li>
+<p>In the Select directory dialogue, select the folder that contains your repository's contents. In this example, I have a repository called "demo":</p>
+<p><a class="glightbox" href="../../../images/image46.JPG" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/image46.JPG" /></a></p>
+</li>
+<li>
+<p>You should be able to see the project structure on the left hand side menu as it is displayed on GitLab, in the image above.</p>
+</li>
+<li>
+<p>Right-click on the Practice folder and select New and New File.</p>
+<p><a class="glightbox" href="../../../images/image5.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/image5.jpg" /></a></p>
+</li>
+<li>
+<p>Name the file.</p>
+</li>
+<li>Add something into that file.</li>
+<li>Save it on Spyder.</li>
+</ol>
+<h3 id="5-commit-your-changes-follow-basic-git-command-workflow">5. Commit your changes (follow basic git command workflow)</h3>
+<p>In the Anaconda Prompt (or any terminal of your choice) type the following. I suggest you read through the git messages displayed after each command entered in the terminal, to familiarise yourself with the logic.</p>
+<p>i. Type <code>git status</code> to see the modifications that haven't been staged yet (in red colour).</p>
+<p>ii. Type <code>git add &lt;filename&gt;</code> to stage your changes. Or <code>git add .</code> to simply stage all changes automatically (use with caution).</p>
+<p>iii. Type <code>git status</code> to see the file modifications now have a green colour. This means that git add was successful.</p>
+<p>iv. Type <code>git commit -m "your commit message here"</code> to commit these changes.</p>
+<p>v. Type <code>git status</code> to view the status of your repo. There should be no modifications visible (or colours!).</p>
+<p>vi. Type <code>git push</code>. This command will upload all your committed changes to GitLab.</p>
+<h3 id="6-check-the-repository-on-gitlab-to-view-the-changes-updated">6. Check the repository on GitLab to view the changes updated</h3>
+<p>Simply head over to GitLab, and the repository page on GitLab, select your branch and compare the changes between your branch and the master branch.</p>
+<p><a class="glightbox" href="../../../images/dropdown_menu_repo.JPG" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/dropdown_menu_repo.JPG" /></a></p>
+<h2 id="how-to-submit-a-merge-request">How to submit a merge request</h2>
+<p>To submit a merge request:</p>
+<ol>
+<li>
+<p>Simply head over to GitLab and to the respective repository</p>
+</li>
+<li>
+<p>Select Merge requests on the menu on the left hand side.</p>
+</li>
+<li>
+<p>On the right select New Merge Request (big blue button).</p>
+</li>
+<li>
+<p>Target branch will always (in most cases) be the master branch. Source branch is your working branch.</p>
+</li>
+<li>
+<p>Click Compare branches and Continue</p>
+</li>
+<li>
+<p>Fill out any information related to the Merge request, title, description, any comments. Assign yourself as the Assignee, assign someone in your team to be the Reviewer. Then, select Create Merge Request.</p>
+</li>
+</ol>
+<h2 id="mark-your-merge-request-as-a-draft-on-gitlab">Mark your merge request as a draft on GitLab</h2>
+<p>After submitting a merge/pull request, you can block the request from being merged if you opt for the "Mark as draft option":</p>
+<p><a class="glightbox" href="../../../images/draft_example.PNG" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/draft_example.PNG" /></a></p>
+<p>This will assign your request as a draft merge request, blocking it from being merged. Once the development work is completed then you can unassign the "Mark as draft" option and the merge request can be accepted.</p>
+<h2 id="how-to-accept-a-merge-request-on-gitlab">How to accept a merge request on GitLab</h2>
+<p>Once you are assigned the merge request's reviewer, you should receive an email notification from GitLab with a link to the merge request's webpage.</p>
+<p>You can also view any active merge requests by clicking on the left hand side menu, once in the repository's page.</p>
+<p><a class="glightbox" href="../../../images/image6.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/image6.jpg" /></a></p>
+<p>In the merge request page, there are three tabs: Overview, Commits and Changes.</p>
+<p><strong>Overview</strong> is the main merge request page. It contains the merge request's description, timeline and comments left by the assignee or reviewer. The approve button does not impact the merge request itself. Not selecting the Approve button won't affect the status or progress of the merge request. GitLab has made this available for teams that are interested in 2-step review processes where one analyst submits a merge request, another approves the request and the reviewer confirms the merge.</p>
+<ul>
+<li>Deleting the Source branch: this will automatically delete the branch created for the merge request. Untick this option to keep the source branch.</li>
+<li>Squash commits: ticking this will merge the history of commits for the source branch into one commit. This can be useful when the merge request is not a major update and you don't want your repository's history of commits to contain commits with messages such as "fixed typo" "replaced incorrectly placed image".</li>
+</ul>
+<p><strong>Commits</strong> tab displays a history of the merge request's commits. So for example, if the reviewer decides that minor adjustments are required and the assignee pushes these changes to GitLab, then these commits will be captured in this tab.</p>
+<p><strong>Changes</strong> tab, here you can see all the new changes in the merge request's source branch. You can also opt for a side-by-side comparison, and see line-by-line how the master version and new branch version compare. You can also leave comments on each file's line, which will also be recorded in the Overview tab's timeline.</p>
+<p>If you are happy with the new changes, then select Merge and the merge request should be completed in a few seconds.</p>
+<h2 id="how-to-update-your-local-master-branch-to-the-latest-remote-master-version-on-gitlabgithub">How to update your local master branch to the latest remote master version on GitLab/Github</h2>
+<ol>
+<li>
+<p>Open the Anaconda Prompt terminal or Git Bash or any other terminal you wish to use. This can be accessed by typing, for example Anaconda Prompt, in the search bar, after opening the search icon on your Windows toolbar.</p>
+</li>
+<li>
+<p>Type <code>cd &lt;paste your work directory address&gt;</code> in the terminal to switch to your working directory. This is where the Git repository is cloned/copied/downloaded to, on your local machine (or RDS environment or any environment you're using). This will cause the default terminal address to be directed at the new directory. (see <a href="#2-git-clone-copydownload-a-gitlab-repository">Git Clone instructions above</a> for more info)</p>
+</li>
+<li>
+<p>Type <code>git status</code> in the terminal to ensure that <code>ii</code> happened successfully and you are on the default master branch. You should see this message:</p>
+<p><a class="glightbox" href="../../../images/image3.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/image3.jpg" /></a></p>
+</li>
+<li>
+<p>Type <code>git pull</code> to update your local master branch with the latest version of the remote/online/GitLab master branch. This might take a few seconds.</p>
+</li>
+</ol>
+<h2 id="the-gitignore-file">The .gitignore file</h2>
+<p>.gitignore is a text file that contains file extensions and directories' paths that we wish git to ignore. For example, we have created a repository on GitLab that should never contain data. To ensure this, in the repository's .gitignore file will include <code>.csv</code>, <code>.xlsx</code> etc.</p>
+<p>Github has a .gitignore <a href="https://github.com/github/gitignore/blob/master/Python.gitignore">template</a> available for analysts and developers to use for their own projects. Notice how in the template, lines 117-118 contain Spyder project settings, which are configuration files created by Spyder when you first open your repository as a Spyder project. Sometimes these configuration files can contain information you don't want to publish on Github/GitLab, thus by including them in the .gitignore file you are ensuring that these files will never leave your local machine.</p>
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+      </main>
+      
+        <head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+ <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<!-- Code for the next arrow from Material for MkDocs -->
+<footer class="md-footer">
+   
+  <nav
+    class="md-footer__inner md-grid"
+    aria-label="Footer"
+    
+  >
+     
+    <a
+      href="../../../implementing_RAP/tools/"
+      class="md-footer__link md-footer__link--prev"
+      aria-label="Previous: Tools"
+      rel="prev"
+    >
+      <div class="md-footer__button md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </div>
+      <div class="md-footer__title">
+        <div class="md-ellipsis">
+          <span class="md-footer__direction"> Previous </span>
+          Tools
+        </div>
+      </div>
+    </a>
+      
+    <a
+      href="../using-git-collaboratively/"
+      class="md-footer__link md-footer__link--next"
+      aria-label="Next: Using Git collaboratively"
+      rel="next"
+    >
+      <div class="md-footer__title">
+        <div class="md-ellipsis">
+          <span class="md-footer__direction"> Next </span>
+          Using Git collaboratively
+        </div>
+      </div>
+      <div class="md-footer__button md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+      </div>
+    </a>
+    
+  </nav>
+  
+</footer>
+
+<footer class="footer">
+  <div class="footer_left">
+    <a href="mailto:datascience@nhs.net"><p>Contact Us</p></a>
+    <p>Developed by <a href="https://digital.nhs.uk/">NHS Digital</a></p>
+    <p>
+      View the project on
+      <a href="https://github.com/NHSDigital/rap-community-of-practice"
+        >GitHub</a
+      >
+    </p>
+  </div>
+
+  <div class="legal">
+    <div class="footer_left">
+    <p>&copy; 2022 Crown Copyright (NHS Digital)</p>
+    <p>All content is available under the
+        <a
+          href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+          >Open Government Licence v3.0</a
+        >, except where otherwise stated.
+      </p>    
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["search.share", "content.code.annotate", "content.tabs.link", "navigation.tabs", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
