@@ -1,6 +1,6 @@
 site_name: Data Viz Community of Practice
 # site_url: https://example.com
-repo_url: https://github.com/p-jacques/data-viz-community-of-practice
+repo_url: https://github.com/NHSDigital/data-viz-community-of-practice
 repo_name: Data Viz Community of Practice
 edit_uri: edit/main/docs/
 plugins:
@@ -20,16 +20,18 @@ nav:
       - Sketches, Wireframes and Prototypes: dashboard_lifecycle/sketches_wireframes_prototypes.md
   - Dashboard design:
       - dashboard_design/index.md
-      - Data-ink ratio: dashboard_design/service-design-and-user-research.md
-      - Dashboard layout: dashboard_design/typical-engagement-flow.md
-      - Navigation: dashboard_design/rap-pre-engagement-questionnaire.md
-      - Device Types: dashboard_design/programme-level-reporting.md
+      - Principles: dashboard_design/principles.md
+      - Layout & navigation: dashboard_design/layout.md
       - Typography: dashboard_design/typography.md
-      - Colours: dashboard_design/support-models.md
-      - Logo: dashboard_design/thin-slice-strategy.md
-      - Filters: dashboard_design/index.md
-      - Tooltips: dashboard_design/index.md
-      - Icons: dashboard_design/index.md
+      - Colours: dashboard_design/colours.md
+      - Icons & logos: dashboard_design/icons.md
+      - Filters & buttons: dashboard_design/filters.md
+      - KPIs: dashboard_design/kpis.md
+      - Chart types: dashboard_design/chart_types.md
+      - Table design: dashboard_design/tables.md
+      - Tooltips: dashboard_design/tooltips.md
+      - Guidance & info page: dashboard_design/guidance.md
+      
   - QA & Testing:
       - Are you ready for RAP?: implementing_RAP/rap-readiness.md
       - Code review: implementing_RAP/code-review.md
@@ -104,6 +106,7 @@ markdown_extensions:
       custom_checkbox: true
   - tables
   - attr_list
+  - md_in_html
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -130,8 +133,8 @@ markdown_extensions:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/NHSDigital/rap-community-of-practice
-      name: NHS Digital Analytical Services
+      link: https://github.com/NHSDigital/data-viz-community-of-practice
+      name: NHS Data Viz Community of Practice
   generator: false
 copyright: Copyright &copy; 2022 Crown Copyright (NHS Digital)
 extra_javascript:
@@ -140,3 +143,5 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 watch:
   - overrides
+plugins:
+  - glightbox
